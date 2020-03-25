@@ -14,6 +14,7 @@ namespace Labortaotio_2
             Console.WriteLine("Bienvenido Nuevo usuario, que desea hacer hoy?");
             Console.WriteLine("Ver todas las canciones (1)");
             Console.WriteLine("Agregar una cancion (2)");
+            Console.WriteLine("Buscar canciones por criterio (3)");
             Console.WriteLine("Salir del programa (9)");
             Cancion cancion1 = new Cancion("Red Moon", "Another Ark", "Uroboros", "Rock");
             
@@ -48,6 +49,13 @@ namespace Labortaotio_2
                             Console.WriteLine("Desea hacer otra operacion?");
                             break;
                         }
+                    case 3:
+                        Console.WriteLine("Ingrese un Criterio");
+                        string crit = Console.ReadLine();
+                        Console.WriteLine("Ingrese un valor");
+                        string val = Console.ReadLine();
+                        k.CancionesPorCriterio(crit, val);
+                        break;
                         
                     case 9:
                         {
