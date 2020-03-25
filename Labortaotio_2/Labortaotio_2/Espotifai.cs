@@ -17,17 +17,29 @@ namespace Labortaotio_2
         }
         public bool AgregarCancion(Cancion cancion)
         {
-            if (ListDeCanciones.Contains(cancion))
-            {
-                return false;
-            }
 
-            else
+            int com = 1;
+
+            foreach (Cancion igualdad in ListDeCanciones)
             {
+                if (igualdad.Informacion() == cancion.Informacion())
+                {
+                    com = 0;
+                }
+            }
+            if (com ==1)
+            {
+                Console.WriteLine("La cancion se agrego con exito");
                 ListDeCanciones.Add(cancion);
                 return true;
 
             }
+            else
+            {
+                Console.WriteLine("la cancion ya esta en el repertorio");
+                return false;
+            }
+                
 
         }
         public void VerCanciones()
@@ -87,9 +99,6 @@ namespace Labortaotio_2
 
 
                     break;
-
-
-
 
                 default:
                     Console.WriteLine("el criterio no es valido");
