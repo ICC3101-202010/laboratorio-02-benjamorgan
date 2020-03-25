@@ -12,10 +12,7 @@ namespace Labortaotio_2
         {
 
             Console.WriteLine("Bienvenido Nuevo usuario, que desea hacer hoy?");
-            Console.WriteLine("Ver todas las canciones (1)");
-            Console.WriteLine("Agregar una cancion (2)");
-            Console.WriteLine("Buscar canciones por criterio (3)");
-            Console.WriteLine("Salir del programa (9)");
+
             Cancion cancion1 = new Cancion("Red Moon", "Another Ark", "Uroboros", "Rock");
             
             int numcase = 0;
@@ -24,14 +21,24 @@ namespace Labortaotio_2
 
             while (numcase != 9)
             {
+
+                Console.WriteLine("");
+                Console.WriteLine("Ver todas las canciones (1)");
+                Console.WriteLine("Agregar una cancion (2)");
+                Console.WriteLine("Buscar canciones por criterio (3)");
+                Console.WriteLine("Crear playlist (4)");
+                Console.WriteLine("Ver mis playlist (5)");
+                Console.WriteLine("Salir del programa (9)");
                 string respuesta = Console.ReadLine();
                 numcase = Convert.ToInt32(respuesta);
+
                 switch (numcase)
+
                 {
                     case 1:
                         {
                             k.VerCanciones();
-                            Console.WriteLine("Desea hacer otra operacion?");
+
                             break;
                         }
                     case 2:
@@ -46,16 +53,41 @@ namespace Labortaotio_2
                             string alb = Console.ReadLine();
                             Cancion Temp = new Cancion(nom, alb, arti, gen);
                             k.AgregarCancion(Temp);
-                            Console.WriteLine("Desea hacer otra operacion?");
+
                             break;
                         }
                     case 3:
-                        Console.WriteLine("Ingrese un Criterio");
-                        string crit = Console.ReadLine();
-                        Console.WriteLine("Ingrese un valor");
-                        string val = Console.ReadLine();
-                        k.CancionesPorCriterio(crit, val);
-                        break;
+                        {
+                            Console.WriteLine("Ingrese un Criterio");
+                            string crit = Console.ReadLine();
+                            Console.WriteLine("Ingrese un valor");
+                            string val = Console.ReadLine();
+                            k.CancionesPorCriterio(crit, val);
+
+                            break;
+                        }
+                    case 4:
+
+                        {
+                            Console.WriteLine("Ingrese el nombre de la playlist que desea crear");
+                            string nomplay = Console.ReadLine();
+                            Console.WriteLine("Ingrese un Criterio");
+                            string crit = Console.ReadLine();
+                            Console.WriteLine("Ingrese un valor");
+                            string val = Console.ReadLine();
+                            k.GenerarPlaylist(crit,val,nomplay);
+
+                            break;
+                        }
+                    case 5:
+                        {
+                            foreach (Playlist playlists in k.ListDePlaylist)
+                            {
+                                playlists.Informacion();
+                            }
+                            break;
+                        }
+
                         
                     case 9:
                         {

@@ -10,6 +10,7 @@ namespace Labortaotio_2
 
     {
         public List<Cancion> ListDeCanciones = new List<Cancion>();
+        public List<Playlist> ListDePlaylist = new List<Playlist>();
 
         public Espotifai()
         {
@@ -50,7 +51,7 @@ namespace Labortaotio_2
                 Console.WriteLine(cancion.Informacion());
             }
         }
-        public Cancion[] CancionesPorCriterio(string criterio, string valor)
+        public List<Cancion> CancionesPorCriterio(string criterio, string valor)
         {
             List<Cancion> Temporal = new List<Cancion>();
             switch (criterio)
@@ -58,14 +59,12 @@ namespace Labortaotio_2
                 case "Nombre":
                     foreach (Cancion item in ListDeCanciones)
                     {
-                       if (item.Nombre == valor)
+                        if (item.Nombre == valor)
                         {
                             Temporal.Add(item);
                         }
                     }
-                    
-                      break;
-
+                    break;
                 case "Genero":
                     foreach (Cancion item in ListDeCanciones)
                     {
@@ -74,8 +73,6 @@ namespace Labortaotio_2
                             Temporal.Add(item);
                         }
                     }
-
-
                     break;
                 case "Artista":
                     foreach (Cancion item in ListDeCanciones)
@@ -85,8 +82,6 @@ namespace Labortaotio_2
                             Temporal.Add(item);
                         }
                     }
-
-
                     break;
                 case "Album":
                     foreach (Cancion item in ListDeCanciones)
@@ -96,32 +91,73 @@ namespace Labortaotio_2
                             Temporal.Add(item);
                         }
                     }
-
-
                     break;
 
                 default:
                     Console.WriteLine("el criterio no es valido");
                     break;
             }
-
-            Cancion[] arraysongs = new Cancion[Temporal.Count];
-            foreach (Cancion song  in Temporal)
-            {
-                Console.WriteLine(song.Informacion());
-                arraysongs.Append(song);
-            }
-            if (arraysongs.Length == 0)
+            
+            if (Temporal.Count == 0)
                 Console.WriteLine("no hay canciones con el valor pedido");
 
-            return arraysongs;
-            // no uso lo que me devuelve el return, debido a que se imprime la informacion antes de la manera solicitada
-            // al imprimirlo al mismo tiempo que separo por criterio, funciona de la manera solicitada.
+            return Temporal;
+
 
             
 
 
         }
+
+
+        public bool GenerarPlaylist(string criterio, string valorCriterio, string nombrePlaylist)
+        {
+            bool safe = true;
+            foreach (Playlist play in ListDePlaylist)
+            {
+               if (play.Nombre == nombrePlaylist)
+                {
+                    safe = false;
+                }
+            }
+            if (safe)
+            {
+                if (CancionesPorCriterio(criterio, valorCriterio).Count != 0)
+                {
+                    Playlist autoplay = new Playlist(nombrePlaylist);
+                    foreach (Cancion item in CancionesPorCriterio(criterio, valorCriterio))
+                    {
+                        autoplay.Plist.Add(item);
+                        
+                    }
+                    ListDePlaylist.Add(autoplay);
+                    Console.WriteLine("La playlist se agrego exitosamente");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("No hay canciones para este criterio");
+                    return false;
+                }
+
+
+            }
+            Console.WriteLine("la playlist ya existe");
+            return false;
+
+
+            
+
+        }
+
+        public string VerMisPlaylists()
+        {
+
+            return "";
+        }
+
+
+
 
 
 
