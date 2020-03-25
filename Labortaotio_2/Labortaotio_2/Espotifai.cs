@@ -7,34 +7,39 @@ using System.Threading.Tasks;
 namespace Labortaotio_2
 {
     class Espotifai
- 
+
     {
-        public Cancion[] ListaDeCanciones = new Cancion[] { };
+        public List<Cancion> ListDeCanciones = new List<Cancion>();
+
         public Espotifai()
         {
 
         }
         public bool AgregarCancion(Cancion cancion)
         {
-            if (Array.Exists(ListaDeCanciones, element => element.Nombre ==cancion.Nombre) && Array.Exists(ListaDeCanciones, element => element.Artista == cancion.Artista && Array.Exists(ListaDeCanciones, elemen => elemen.Genero == cancion.Genero)))
+            if (ListDeCanciones.Contains(cancion))
             {
                 return false;
             }
 
             else
             {
-                ListaDeCanciones.Append(cancion);
-                Console.WriteLine(ListaDeCanciones[0]);
+                ListDeCanciones.Add(cancion);
                 return true;
 
             }
-             void VerCanciones()
+
+        }
+        public void VerCanciones()
+        {
+           foreach (Cancion cancion in ListDeCanciones)
             {
-                //Console.WriteLine(canciones);
+
+                Console.WriteLine(cancion.Informacion());
             }
         }
     }
 
 
-    }
+}
 
