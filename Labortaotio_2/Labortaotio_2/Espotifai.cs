@@ -9,8 +9,20 @@ namespace Labortaotio_2
     class Espotifai
 
     {
-        public List<Cancion> ListDeCanciones = new List<Cancion>();
-        public List<Playlist> ListDePlaylist = new List<Playlist>();
+        private List<Cancion> ListDeCanciones = new List<Cancion>();
+        public List<Cancion> listDeCanciones
+        {
+            get => ListDeCanciones;
+            set => ListDeCanciones = listDeCanciones;
+        }
+        private List<Playlist> ListDePlaylist = new List<Playlist>();
+        public List<Playlist> listDePlaylist
+        {
+            get => ListDePlaylist;
+            set => ListDePlaylist = listDePlaylist;
+        }
+
+
 
         public Espotifai()
         {
@@ -59,38 +71,46 @@ namespace Labortaotio_2
                 case "Nombre":
                     foreach (Cancion item in ListDeCanciones)
                     {
-                        if (item.Nombre == valor)
+                        if (item.nombre == valor)
                         {
                             Temporal.Add(item);
+
                         }
                     }
+
                     break;
                 case "Genero":
                     foreach (Cancion item in ListDeCanciones)
                     {
-                        if (item.Genero == valor)
+                        if (item.genero == valor)
                         {
                             Temporal.Add(item);
+
                         }
                     }
+
                     break;
                 case "Artista":
                     foreach (Cancion item in ListDeCanciones)
                     {
-                        if (item.Artista == valor)
+                        if (item.artista == valor)
                         {
                             Temporal.Add(item);
+ 
                         }
                     }
+
                     break;
                 case "Album":
                     foreach (Cancion item in ListDeCanciones)
                     {
-                        if (item.Album == valor)
+                        if (item.album == valor)
                         {
                             Temporal.Add(item);
+
                         }
                     }
+ 
                     break;
 
                 default:
@@ -115,7 +135,7 @@ namespace Labortaotio_2
             bool safe = true;
             foreach (Playlist play in ListDePlaylist)
             {
-               if (play.Nombre == nombrePlaylist)
+               if (play.nombre == nombrePlaylist)
                 {
                     safe = false;
                 }
@@ -127,7 +147,7 @@ namespace Labortaotio_2
                     Playlist autoplay = new Playlist(nombrePlaylist);
                     foreach (Cancion item in CancionesPorCriterio(criterio, valorCriterio))
                     {
-                        autoplay.Plist.Add(item);
+                        autoplay.plist.Add(item);
                         
                     }
                     ListDePlaylist.Add(autoplay);

@@ -8,10 +8,33 @@ namespace Labortaotio_2
 {
     class Cancion
     {
-        public string Nombre;
-        public string Album;
-        public string Artista;
-        public string Genero;
+        private string Nombre;
+        public string nombre
+            {
+            get => Nombre;
+            set => Nombre = nombre ;
+            }
+
+        private string Album;
+        public string album
+        {
+            get => Album;
+            set => Album =album ;
+        }
+
+        private string Artista;
+        public string artista
+        {
+            get => Artista;
+            set => Artista = artista;
+        }
+
+        private string Genero;
+        public string genero
+        {
+            get => Genero;
+            set => Genero = genero;
+        }
 
         public Cancion(string aNombre, string aAlbum, string aArtista, string aGenero)
         {

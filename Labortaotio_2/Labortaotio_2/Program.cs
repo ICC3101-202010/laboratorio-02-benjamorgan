@@ -13,11 +13,11 @@ namespace Labortaotio_2
 
             Console.WriteLine("Bienvenido Nuevo usuario, que desea hacer hoy?");
 
-            Cancion cancion1 = new Cancion("Red Moon", "Another Ark", "Uroboros", "Rock");
+            
             
             int numcase = 0;
             Espotifai k = new Espotifai();
-            k.AgregarCancion(cancion1);
+
 
             while (numcase != 9)
             {
@@ -58,7 +58,7 @@ namespace Labortaotio_2
                         }
                     case 3:
                         {
-                            Console.WriteLine("Ingrese un Criterio");
+                            Console.WriteLine("Ingrese un Criterio (Genero,Album,Artista,Nombre)");
                             string crit = Console.ReadLine();
                             Console.WriteLine("Ingrese un valor");
                             string val = Console.ReadLine();
@@ -71,7 +71,7 @@ namespace Labortaotio_2
                         {
                             Console.WriteLine("Ingrese el nombre de la playlist que desea crear");
                             string nomplay = Console.ReadLine();
-                            Console.WriteLine("Ingrese un Criterio");
+                            Console.WriteLine("Ingrese un Criterio (Genero,Album,Artista,Nombre)");
                             string crit = Console.ReadLine();
                             Console.WriteLine("Ingrese un valor");
                             string val = Console.ReadLine();
@@ -81,7 +81,7 @@ namespace Labortaotio_2
                         }
                     case 5:
                         {
-                            foreach (Playlist playlists in k.ListDePlaylist)
+                            foreach (Playlist playlists in k.listDePlaylist)
                             {
                                 playlists.Informacion();
                             }

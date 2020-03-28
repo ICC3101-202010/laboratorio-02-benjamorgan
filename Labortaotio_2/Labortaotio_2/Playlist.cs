@@ -9,8 +9,18 @@ namespace Labortaotio_2
     class Playlist
     {
 
-        public string Nombre;
-        public List<Cancion> Plist = new List<Cancion>();
+        private string Nombre;
+        public string nombre
+        {
+            get => Nombre;
+            set => Nombre = nombre;
+        }
+        private List<Cancion> Plist = new List<Cancion>();
+        public List<Cancion> plist
+        {
+            get => Plist;
+            set => Plist = plist;
+        }
 
         public Playlist(string aNombre)
         {
